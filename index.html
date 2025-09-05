@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retro-Snake Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="title">Retro Snake Game</h1>
+      <p class="subtitle">90's style arcade game</p>
+    </header>
+
+    <div id="startScreen" class="screen">
+      <div class="welcome-message">
+        <p class="greeting">Welcome Player001, Your journey to nostalgia begins.</p>
+        <div class="rules-container">
+          <h3>SIMULATION PARAMETERS:</h3>
+          <div class="rules-grid">
+            <div class="rule-item">
+              <span class="pill red-pill">❤️</span>
+              <span class="rule-text">Apple → +1 Score</span>
+            </div>
+            <div class="rule-item">
+              <span class="pill white-pill">🤍</span>
+              <span class="rule-text">Ice cream → +2 Score</span>
+            </div>
+            <div class="rule-item">
+              <span class="pill blue-pill">💙</span>
+              <span class="rule-text">Bomb → System Termination</span>
+            </div>
+            <div class="rule-item">
+              <span class="pill control-pill">[CTL]</span>
+              <span class="rule-text">Arrow Keys / WASD → Neural Control</span>
+            </div>
+          </div>
+        </div>
+        <button class="game-button" id="startButton">
+          <span class="button-text">Initialize Simulation</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="game-container">
+      <div class="game-info">
+        <div class="score-display">
+          <span class="label">Score:</span>
+          <span id="currentScore" class="score">0</span>
+        </div>
+        <div class="level-display">
+          <span class="label">Level:</span>
+          <span id="currentLevel" class="level">1</span>
+        </div>
+        <div class="speed-display">
+          <span class="label">Processing Speed:</span>
+          <span id="currentSpeed" class="speed">Normal</span>
+        </div>
+      </div>
+      
+      <canvas id="gameCanvas" width="600" height="600"></canvas>
+      
+      <div class="controls-hint">
+        <p>Use Arrow Keys or WASD to control the snake</p>
+        <p>Press SPACE to pause/resume game</p>
+      </div>
+    </div>
+
+    <div id="gameOverScreen" class="screen" style="display:none;">
+      <div class="game-over-content">
+        <h2 class="game-over-title">GAME OVER</h2>
+        <div class="final-stats">
+          <p class="final-score">Final Score: <span id="finalScore">0</span></p>
+          <p class="final-level">Maximum Level Reached: <span id="finalLevel">1</span></p>
+          <p class="survival-time">Game Duration: <span id="survivalTime">0</span>s</p>
+        </div>
+        <div class="performance-rating">
+          <p class="rating-label">Performance Rating:</p>
+          <p id="performanceRating" class="rating">Calculating...</p>
+        </div>
+        <div class="button-group">
+          <button class="game-button retry-button" onclick="gameManager.startGame()">
+            <span class="button-text">Restart Game</span>
+          </button>
+          <button class="game-button menu-button" onclick="gameManager.showMenu()">
+            <span class="button-text">Return to Menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="pauseScreen" class="screen overlay" style="display:none;">
+      <div class="pause-content">
+        <h2 class="pause-title">GAME PAUSED</h2>
+        <p>Press SPACE to resume or ESC to return to menu</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+  <script src="counter.js"></script>
+</body>
+</html>
